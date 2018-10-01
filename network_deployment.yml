@@ -13,6 +13,7 @@
 
   roles:
     - l3_interfaces
+    - ospf
 
 # - name: Enable NX-API on NX-OS
 #   hosts: nxos

@@ -1,14 +1,11 @@
 ---
 l3_interfaces:
   - interface_type: ethernet
-    interface_id: 2/1
+    interface_id: 1/2
     description: L3 link to core1
     ip_address: 10.10.10.6
     subnet_mask: 255.255.255.252
     prefix: /30
-  - interface_type: ethernet
-    interface_id: 2/1
-    description: L3 link to core2
-    ip_address: 10.10.10.18
-    subnet_mask: 255.255.255.252
-    prefix: /30
+
+ospf:
+  - interface: ethernet1/2
