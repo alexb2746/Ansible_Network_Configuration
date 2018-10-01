@@ -1,0 +1,16 @@
+---
+- name: Configure Layer 3 Interfaces
+  with_items: "{{ l3_interfaces }}"
+  nxos_interface:
+    provider: "{{ credentials }}"
+    name: "{{ item.interface_type }}{{ item.interface_id }}"
+    mode: layer3
+    description: "{{ item.description }}"
+    admin_state: up
+
+- name: Configure IPv4 Address on Interface
+  with_items: "{{ l3_interfaces }}"
+  nxos_l3_interface:
+    provider: "{{ credentials }}"
+    name: "{{ item.interface_type }}{{ item.interface_id }}"
+    ipv4: "{{ item.ip_address }}{{ item.prefix }}"

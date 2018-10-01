@@ -1,0 +1,23 @@
+---
+- name: Use Ansible to configure network
+  hosts: nxos
+  connection: local
+  gather_facts: false
+
+  vars:
+    credentials:
+      host: "{{ inventory_hostname }}"
+      username: admin
+      password: admin
+      validate_certs: no
+
+  roles:
+    - l3_interfaces
+
+# - name: Enable NX-API on NX-OS
+#   hosts: nxos
+#   connection: local
+#   gather_facts: false
+#
+#   roles:
+#     - nxos_nxapi
