@@ -1,0 +1,20 @@
+---
+- name: enable the OSPF feature on nexus switches
+  nxos_feature:
+    feature: ospf
+    provider: "{{ credentials }}"
+    state: enabled
+
+- name: configure ospf instance
+  nxos_ospf:
+    provider: "{{ credentials }}"
+    ospf: 1
+    state: present
+
+- name: configure ospf Interfaces
+  with_items: "{{ ospf }}"
+  nxos_interface_ospf:
+    provider: "{{ credentials }}"
+    interface: "{{ item.interface }}"
+    ospf: 1
+    area: 0.0.0.0
